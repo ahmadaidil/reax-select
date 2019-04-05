@@ -6,7 +6,8 @@ import { SelectStyled } from './styled'
 export default function Select({
   options,
   value,
-  onChange
+  onChange,
+  placeholder
 }) {
   return (
     <>
@@ -15,7 +16,7 @@ export default function Select({
         onChange={onChange}
         isPlaceholder={value === ''}
       >
-        <option disabled hidden value="">Select...</option>
+        <option disabled hidden value="">{placeholder}</option>
         {options.map((option, index) => (
           <option key={index} value={option.value}>{option.label}</option>
         ))}
@@ -27,5 +28,10 @@ export default function Select({
 Select.propTypes = {
   options: PropTypes.array.isRequired,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string
+}
+
+Select.defaultProps = {
+  placeholder: 'Select...'
 }

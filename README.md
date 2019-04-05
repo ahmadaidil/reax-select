@@ -48,6 +48,7 @@ export default function App() {
       value={selectVal}
       options={options}
       onChange={e => setSelectVal(e.target.value)}
+      placeholder="select your favorite brand car..."
     />
   )
 }

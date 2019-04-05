@@ -1,0 +1,68 @@
+{
+  "name": "reax-select",
+  "version": "1.0.0",
+  "description": "Select input for react component",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "repository": "https://github.com/ahmadaidil/reax-select.git",
+  "author": "ahmadaidil <ahmdaidil@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "run-p build:watch example",
+    "build": "rollup -c",
+    "build:watch": "rollup -c -w",
+    "lint": "esw --ext .jsx --ext .js --color",
+    "lint:css": "stylelint './src/**/*.js'",
+    "prerelease": "run -s lint lint:css build",
+    "release": "yarn publish",
+    "example": "cd example; yarn start",
+    "example:install": "cd example; yarn",
+    "precommit-msg": "echo 'Linter checks...' && exit 0"
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "lint",
+    "lint:css"
+  ],
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "dependencies": {
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-styled-components": "^1.10.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "eslint-watch": "^5.0.1",
+    "npm-run-all": "^4.1.5",
+    "pre-commit": "^1.2.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rollup": "^1.9.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-terser": "^4.0.4",
+    "stylelint": "^9.10.1",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.6.0"
+  }
+}

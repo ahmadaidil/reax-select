@@ -1,0 +1,14 @@
+.eslint*
+.yarnrc
+
+yarn-debug.log*
+yarn-error.log*
+rollup.config.js
+
+docker*
+Docker*
+
+public
+src
+example
+scripts

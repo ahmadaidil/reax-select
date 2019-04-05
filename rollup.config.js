@@ -21,7 +21,6 @@ export default {
     }
   ],
   external: ['styled-components'],
-  globals: { 'styled-components': 'styled' },
   plugins: [
     external({
       includeDependencies: false

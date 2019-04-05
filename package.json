@@ -8,13 +8,16 @@
   "repository": "https://github.com/ahmadaidil/reax-select.git",
   "author": "ahmadaidil <ahmdaidil@gmail.com>",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "http://repo.volantis.io/repository/npm/"
+  },
   "scripts": {
     "start": "run-p build:watch example",
     "build": "rollup -c",
     "build:watch": "rollup -c -w",
     "lint": "esw --ext .jsx --ext .js --color",
     "lint:css": "stylelint './src/**/*.js'",
-    "prerelease": "run -s lint lint:css build",
+    "prerelease": "run-s lint lint:css build",
     "release": "yarn publish",
     "example": "cd example; yarn start",
     "example:install": "cd example; yarn",

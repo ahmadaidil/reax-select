@@ -33,6 +33,7 @@
     "react-dom": "^16.8.6"
   },
   "dependencies": {
+    "react-virtualized": "^9.21.0",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {

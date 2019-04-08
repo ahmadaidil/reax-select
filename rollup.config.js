@@ -20,7 +20,7 @@ export default {
       sourcemap: true
     }
   ],
-  external: ['styled-components'],
+  // external: ['styled-components'],
   plugins: [
     external({
       includeDependencies: false

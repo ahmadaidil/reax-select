@@ -13,7 +13,9 @@
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-scripts": "^2.1.8",
-    "reax-select": "link:.."
+    "reax-select": "link:..",
+    "styled-components": "link:../node_modules/styled-components",
+    "volantis-icon": "^0.1.1"
   },
   "browserslist": [
     ">0.2%",

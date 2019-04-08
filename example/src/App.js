@@ -1,4 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+import { VolantisIcon } from 'volantis-icon'
 import Select from 'reax-select'
 
 const options = [
@@ -7,6 +11,27 @@ const options = [
   { label: 'Mercedes', value: 'mercedes' },
   { label: 'Audi', value: 'audi' }
 ]
+
+function labelComponent(props) {
+  const Label = styled.div`
+    display: flex;
+    align-items: center;
+    svg {
+      margin-right: .5rem;
+    }
+  `
+
+  return (
+    <Label>
+      <VolantisIcon height="20" width="20" color="black" />
+      {props.children}
+    </Label>
+  )
+}
+
+labelComponent.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 export default function App() {
   const [selectSingle, setSelectSingle] = React.useState({})
@@ -29,7 +54,16 @@ export default function App() {
         value={selectMulti}
         options={options}
         onChange={val => setSelectMulti(val)}
-        placeholder="select your favorites brand car..."
+        placeholder="select your favorites brand car... (multi)"
+      />
+      <br />
+      <Select
+        searchable
+        value={selectSingle}
+        options={options}
+        onChange={val => setSelectSingle(val)}
+        placeholder="select your favorite brand car... (with icon label option)"
+        labelComponent={labelComponent}
       />
     </>
   )

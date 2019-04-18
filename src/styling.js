@@ -6,7 +6,7 @@ const id = 'reax-select-style'
 function create() {
   const ReaxSelectStyle = createGlobalStyle`
     .reax-select, .reax-select-menu {
-      --reax-select-error-color: #ff5c5c; 
+      --reax-select-error-color: #d5474f; 
     }
   `
   const reaxSelectDiv = document.createElement('div')

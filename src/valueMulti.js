@@ -20,22 +20,26 @@ export default class ValueMulti extends React.PureComponent {
     const { option, labelComponent, onRemove } = this.props
     const Label = (labelComponent || LabelComponent)
 
-    return (React.createElement(TagContainer, Object.assign({ className: 'value-multi' }, option),
-      React.createElement(Remove, { value: option.value, onClick: onRemove }, '\u00D7'),
-      React.createElement(Label, Object.assign({ type: 'value-multi', active: true }, option), option.label)))
+    return (
+      React.createElement(
+        TagContainer, Object.assign({ className: 'value-multi' }, option),
+        React.createElement(Label, Object.assign({ type: 'value-multi', active: true }, option), option.label),
+        React.createElement(Remove, { value: option.value, onClick: onRemove }, '\u00D7')
+      )
+    )
   }
 }
 
 ValueMulti.TagContainer = styled.div`
   display: flex;
-  padding: 0px 3px;
-  background-color: rgba(0, 126, 255, 0.08);
-  border-radius: 2px;
-  border: 1px solid rgba(0, 126, 255, 0.24);
-  color: #007eff;
-  font-size: 0.9em;
-  line-height: 1.4;
-  margin: 2px 3px;
+  padding: 4px 8px 4px 12px;
+  background-color: #1b1c21;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4;
+  margin: 0 4px;
   align-items: center;
   &:last-of-type {
     margin-right: 5px;

@@ -512,13 +512,14 @@ export default class Select extends React.PureComponent {
 }
 
 Select.Container = styled.div`
+  font: 400 14px 'Roboto', sans-serif;
   display: flex;
   position: relative;
   cursor: default;
   width: 100%;
   box-sizing: border-box;
   pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
-  opacity: ${props => (props.disabled ? 0.75 : 1)};
+  opacity: ${props => (props.disabled ? '0.4' : '1')};
   user-select: none;
 `
 

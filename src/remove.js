@@ -23,20 +23,21 @@ export default class Remove extends React.PureComponent {
 }
 
 Remove.StyledRemove = styled.button`
+  width: 16px;
+  height: 16px;
   cursor: pointer;
-  color: #007eff;
+  color: #1b1c21;
   border: none;
-  background: none;
+  background: #9ea1b4;
   padding: 2px 4px;
   margin: 0;
-  margin-right: 4px;
   line-height: 1;
   display: inline-block;
-  border-right: 1px solid rgba(0, 126, 255, 0.24);
-  margin-left: -2px;
-  font-size: 13px;
+  border-radius: 20px;
+  margin-left: 8px;
+  font-size: 12px;
   &:hover {
-    background-color: rgba(0, 113, 230, 0.08);
+    background-color: #ffd77b;
   }
   &:focus {
     outline: none;

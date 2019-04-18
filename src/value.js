@@ -26,7 +26,7 @@ const ArrowButton = styled(Button)`
   color: #ccc;
   transform: translateY(2px);
   &:hover {
-    color: #333;
+    color: #ffd77b;
   }
 `
 
@@ -36,17 +36,20 @@ const ValueContainer = styled.div`
   justify-content: space-between;
   flex: 1;
   min-height: 32px;
-  pointer-events: ${props => (props.mobile || props.disabled ? 'none' : 'auto')};
-  padding: 5px 10px;
-  background: #fff;
+  pointer-events: ${props => (props.mobile || props.disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${props => (props.disabled ? '0.4' : '1')};
+  padding: 0 8px;
+  background: #454958;
   cursor: default;
   border-width: 1px;
   border-style: solid;
-  border-color: ${props => (props.error ? 'var(--reax-select-error-color)' : '#ccc')};
+  border-color: ${props => (props.error ? 'var(--reax-select-error-color)' : '#1b1c21')};
+  border-radius: 4px;
   z-index: 0;
   box-sizing: border-box;
   max-width: 100%;
   box-shadow: ${props => (props.focused ? 'rgba(0, 0, 0, 0.15) 0 0 2px' : 'none')};
+  color: #fff;
 `
 
 const ValueLeft = styled.div`
@@ -68,7 +71,7 @@ const ValueRight = styled.div`
 `
 
 const Placeholder = styled(Label)`
-  color: #aaa;
+  color: #fff;
 `
 
 const ClearButton = styled(Button)`

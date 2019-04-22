@@ -33,7 +33,8 @@
     "styled-components": "^4.2.0"
   },
   "dependencies": {
-    "react-virtualized": "^9.21.0"
+    "react-virtualized": "^9.21.0",
+    "volantis-icon": "^0.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

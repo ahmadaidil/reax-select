@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { ArrowDropupIcon, ArrowDropdownIcon } from 'volantis-icon'
 import Label from './label'
 import {
   keys, getValueOptions, getWindow, toKey
@@ -38,7 +39,7 @@ const ValueContainer = styled.div`
   min-height: 32px;
   pointer-events: ${props => (props.mobile || props.disabled ? 'not-allowed' : 'pointer')};
   opacity: ${props => (props.disabled ? '0.4' : '1')};
-  padding: 0 8px;
+  padding-left: 8px;
   background: #454958;
   cursor: default;
   border-width: 1px;
@@ -265,6 +266,6 @@ export class Value extends React.PureComponent {
         type: 'button', tabIndex: -1, className: 'clearer', onClick: this.onClear
       },
       React.createElement(ClearComponent, null))),
-      React.createElement(ArrowButton, { type: 'button', className: 'arrow', tabIndex: -1 }, ArrowComponent ? (React.createElement(ArrowComponent, { open })) : open ? ('▲') : ('▼')))))
+      React.createElement(ArrowButton, { type: 'button', className: 'arrow', tabIndex: -1 }, ArrowComponent ? (React.createElement(ArrowComponent, { open })) : open ? (<ArrowDropupIcon isHover />) : (<ArrowDropdownIcon isHover />)))))
   }
 }

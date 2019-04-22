@@ -4720,6 +4720,11 @@ vfile@^3.0.0:
     unist-util-stringify-position "^1.0.0"
     vfile-message "^1.0.0"
 
+volantis-icon@^0.2.0:
+  version "0.2.0"
+  resolved "http://repo.volantis.io/repository/npm-install/volantis-icon/-/volantis-icon-0.2.0.tgz#f1a886fe27aaf3110cd33dcc59bf9fe4beeb1188"
+  integrity sha512-AQrorNHJJ21AcLf4Bg08QCkVa1RdX345pKKBc9mDf1MzPuUfyNfpiEyQ7mB/zyh8PdLQo9xBN893spQY+t8yOQ==
+
 which@1.2.x:
   version "1.2.14"
   resolved "https://registry.yarnpkg.com/which/-/which-1.2.14.tgz#9a87c4378f03e827cecaf1acdf56c736c01c14e5"

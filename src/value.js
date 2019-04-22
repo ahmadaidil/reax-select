@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { ArrowDropupIcon, ArrowDropdownIcon } from 'volantis-icon'
+import ArrowDropupIcon from 'volantis-icon/dist/icons/ArrowDropup'
+import ArrowDropdownIcon from 'volantis-icon/dist/icons/ArrowDropdown'
 import Label from './label'
 import {
   keys, getValueOptions, getWindow, toKey

@@ -23,7 +23,7 @@ function labelComponent(props) {
 
   return (
     <Label>
-      <VolantisIcon height="20" width="20" color="black" />
+      <VolantisIcon height="20" width="20" color="#93a1b4" />
       {props.children}
     </Label>
   )
@@ -62,7 +62,7 @@ export default function App() {
         value={selectSingle}
         options={options}
         onChange={val => setSelectSingle(val)}
-        placeholder="select your favorite brand car... (with icon label option)"
+        placeholder="Search"
         labelComponent={labelComponent}
       />
     </>

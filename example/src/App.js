@@ -62,7 +62,7 @@ export default function App() {
         value={selectSingle}
         options={options}
         onChange={val => setSelectSingle(val)}
-        placeholder="Search"
+        placeholder="select your favorite brand car... (with icon label option)"
         labelComponent={labelComponent}
       />
     </>

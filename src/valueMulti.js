@@ -24,7 +24,7 @@ export default class ValueMulti extends React.PureComponent {
       React.createElement(
         TagContainer, Object.assign({ className: 'value-multi' }, option),
         React.createElement(Label, Object.assign({ type: 'value-multi', active: true }, option), option.label),
-        React.createElement(Remove, { value: option.value, onClick: onRemove }, '\u00D7')
+        React.createElement(Remove, { value: option.value, onClick: onRemove }, null)
       )
     )
   }

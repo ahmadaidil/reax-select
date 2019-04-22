@@ -23,13 +23,9 @@ const Button = styled.button`
   }
 `
 
-const ArrowButton = styled(Button)`
-  font-size: 12px;
-  color: #ccc;
-  transform: translateY(2px);
-  &:hover {
-    color: #ffd77b;
-  }
+const ArrowStyled = styled.div`
+  display: flex;
+  align-items: center;
 `
 
 const ValueContainer = styled.div`
@@ -267,6 +263,6 @@ export class Value extends React.PureComponent {
         type: 'button', tabIndex: -1, className: 'clearer', onClick: this.onClear
       },
       React.createElement(ClearComponent, null))),
-      React.createElement(ArrowButton, { type: 'button', className: 'arrow', tabIndex: -1 }, ArrowComponent ? (React.createElement(ArrowComponent, { open })) : open ? (<ArrowDropupIcon isHover />) : (<ArrowDropdownIcon isHover />)))))
+      React.createElement(ArrowStyled, null, ArrowComponent ? (React.createElement(ArrowComponent, { open })) : open ? (<ArrowDropupIcon width="24px" height="24px" isHover />) : (<ArrowDropdownIcon width="24px" height="24px" isHover />)))))
   }
 }

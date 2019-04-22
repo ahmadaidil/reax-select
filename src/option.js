@@ -42,6 +42,11 @@ export default class OptionComponent extends React.PureComponent {
 
 OptionComponent.OptionItem = styled.div`
   font: 400 14px 'Roboto', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
   display: flex;
   align-items: center;
   justify-content: space-between;

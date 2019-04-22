@@ -44,7 +44,7 @@ const ValueContainer = styled.div`
   border-width: 1px;
   border-style: solid;
   border-color: ${props => (props.error ? 'var(--reax-select-error-color)' : '#1b1c21')};
-  border-radius: 4px;
+  border-radius: ${props => (props.open ? '4px 4px 0 0' : '4px')};
   z-index: 0;
   box-sizing: border-box;
   max-width: 100%;
@@ -72,6 +72,7 @@ const ValueRight = styled.div`
 
 const Placeholder = styled(Label)`
   color: #fff;
+  opacity: 0.6;
 `
 
 const ClearButton = styled(Button)`
@@ -253,7 +254,7 @@ export class Value extends React.PureComponent {
     const searchAtEnd = multi && valueOptions.length > 0
 
     return (React.createElement(ValueContainer, {
-      'data-role': 'value', className: 'reax-select-value', disabled, mobile, focused, error, onClick: this.onClick
+      'data-role': 'value', className: 'reax-select-value', disabled, mobile, focused, error, open, onClick: this.onClick
     },
     React.createElement(ValueLeft, { className: 'value-left', multi, hasValue: !!valueOptions.length },
       searchAtStart && this.renderSearch(),

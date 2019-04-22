@@ -513,6 +513,11 @@ export default class Select extends React.PureComponent {
 
 Select.Container = styled.div`
   font: 400 14px 'Roboto', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
   display: flex;
   position: relative;
   cursor: default;

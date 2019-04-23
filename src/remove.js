@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import CloseCircleIcon from 'volantis-icon/dist/icons/CloseCircle'
 
 export default class Remove extends React.PureComponent {
   static propTypes = {
@@ -16,29 +17,16 @@ export default class Remove extends React.PureComponent {
   render() {
     const { StyledRemove } = Remove
 
-    return (React.createElement(StyledRemove, {
-      className: 'remove', type: 'button', tabIndex: -1, onClick: this.onClick
-    }, '\u00D7'))
+    return (
+      React.createElement(StyledRemove, null, React.createElement(CloseCircleIcon, {
+        width: '16px', height: '16px', isHover: true, onClick: this.onClick
+      }))
+    )
   }
 }
 
-Remove.StyledRemove = styled.button`
-  cursor: pointer;
-  color: #007eff;
-  border: none;
-  background: none;
-  padding: 2px 4px;
-  margin: 0;
-  margin-right: 4px;
-  line-height: 1;
-  display: inline-block;
-  border-right: 1px solid rgba(0, 126, 255, 0.24);
-  margin-left: -2px;
-  font-size: 13px;
-  &:hover {
-    background-color: rgba(0, 113, 230, 0.08);
-  }
-  &:focus {
-    outline: none;
-  }
+Remove.StyledRemove = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
 `

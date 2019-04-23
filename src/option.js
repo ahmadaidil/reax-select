@@ -31,7 +31,7 @@ export default class OptionComponent extends React.PureComponent {
       'option',
       selected ? 'selected' : null,
       active ? 'active' : null
-    ].filter(v => Boolean(v))
+    ].filter(Boolean)
 
     return (React.createElement(OptionItem, {
       className: className.join(' '), selected, active, height, onClick: this.onClick
@@ -41,6 +41,12 @@ export default class OptionComponent extends React.PureComponent {
 }
 
 OptionComponent.OptionItem = styled.div`
+  font: 400 14px 'Roboto', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,9 +56,10 @@ OptionComponent.OptionItem = styled.div`
   min-width: 0;
   cursor: pointer;
   box-sizing: border-box;
-  background-color: ${props => (props.active ? '#ddd' : props.selected ? '#eee' : '#fff')};
+  color: #fff;
+  background-color: ${props => (props.active ? '#313440' : props.selected ? '#313440' : '#454958')};
 
   &:hover {
-    background-color: ${props => (props.active ? '#ddd' : '#eee')};
+    background-color: #313440;
   }
 `

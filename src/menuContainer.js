@@ -45,7 +45,7 @@ const Container = styled.div.attrs(props => ({
 }))`
   position: fixed;
   z-index: 9999;
-  background: #fff;
+  background: transparent;
   box-sizing: border-box;
   box-shadow: ${props => (menuPosition(props) === 'bottom'
     ? '0 2px 5px rgba(0, 0, 0, 0.1)'
@@ -54,8 +54,9 @@ const Container = styled.div.attrs(props => ({
   .ReactVirtualized__List {
     border-width: 1px;
     border-style: solid;
-    border-color: ${props => (props.error ? 'var(--react-select-error-color)' : '#ccc')};
-    background-color: #fff;
+    border-color: ${props => (props.error ? 'var(--react-select-error-color)' : '#1b1c21')};
+    border-radius: 0 0 4px 4px;
+    background-color: transparent;
     &:focus {
       outline: none;
     }

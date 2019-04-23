@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import ArrowDropupIcon from 'volantis-icon/dist/icons/ArrowDropup'
+import ArrowDropdownIcon from 'volantis-icon/dist/icons/ArrowDropdown'
 import Label from './label'
 import {
   keys, getValueOptions, getWindow, toKey
@@ -21,13 +23,9 @@ const Button = styled.button`
   }
 `
 
-const ArrowButton = styled(Button)`
-  font-size: 12px;
-  color: #ccc;
-  transform: translateY(2px);
-  &:hover {
-    color: #333;
-  }
+const ArrowStyled = styled.div`
+  display: flex;
+  align-items: center;
 `
 
 const ValueContainer = styled.div`
@@ -36,17 +34,20 @@ const ValueContainer = styled.div`
   justify-content: space-between;
   flex: 1;
   min-height: 32px;
-  pointer-events: ${props => (props.mobile || props.disabled ? 'none' : 'auto')};
-  padding: 5px 10px;
-  background: #fff;
+  pointer-events: ${props => (props.mobile || props.disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${props => (props.disabled ? '0.4' : '1')};
+  padding-left: 8px;
+  background: #454958;
   cursor: default;
   border-width: 1px;
   border-style: solid;
-  border-color: ${props => (props.error ? 'var(--reax-select-error-color)' : '#ccc')};
+  border-color: ${props => (props.error ? 'var(--reax-select-error-color)' : '#1b1c21')};
+  border-radius: ${props => (props.open ? '4px 4px 0 0' : '4px')};
   z-index: 0;
   box-sizing: border-box;
   max-width: 100%;
   box-shadow: ${props => (props.focused ? 'rgba(0, 0, 0, 0.15) 0 0 2px' : 'none')};
+  color: #fff;
 `
 
 const ValueLeft = styled.div`
@@ -68,7 +69,8 @@ const ValueRight = styled.div`
 `
 
 const Placeholder = styled(Label)`
-  color: #aaa;
+  color: #fff;
+  opacity: 0.6;
 `
 
 const ClearButton = styled(Button)`
@@ -250,7 +252,7 @@ export class Value extends React.PureComponent {
     const searchAtEnd = multi && valueOptions.length > 0
 
     return (React.createElement(ValueContainer, {
-      'data-role': 'value', className: 'reax-select-value', disabled, mobile, focused, error, onClick: this.onClick
+      'data-role': 'value', className: 'reax-select-value', disabled, mobile, focused, error, open, onClick: this.onClick
     },
     React.createElement(ValueLeft, { className: 'value-left', multi, hasValue: !!valueOptions.length },
       searchAtStart && this.renderSearch(),
@@ -261,6 +263,6 @@ export class Value extends React.PureComponent {
         type: 'button', tabIndex: -1, className: 'clearer', onClick: this.onClear
       },
       React.createElement(ClearComponent, null))),
-      React.createElement(ArrowButton, { type: 'button', className: 'arrow', tabIndex: -1 }, ArrowComponent ? (React.createElement(ArrowComponent, { open })) : open ? ('▲') : ('▼')))))
+      React.createElement(ArrowStyled, null, ArrowComponent ? (React.createElement(ArrowComponent, { open })) : open ? (<ArrowDropupIcon width="24px" height="24px" isHover />) : (<ArrowDropdownIcon width="24px" height="24px" isHover />)))))
   }
 }

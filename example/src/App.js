@@ -55,6 +55,7 @@ export default function App() {
         options={options}
         onChange={val => setSelectMulti(val)}
         placeholder="select your favorites brand car... (multi)"
+        labelComponent={labelComponent}
       />
       <br />
       <Select

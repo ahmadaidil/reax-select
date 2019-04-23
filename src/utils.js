@@ -47,13 +47,11 @@ export function isArray(val) {
 }
 
 export function getValueOptions(options, value) {
-  return options.filter(option => {
-    if (isArray(value)) {
-      return value.some(val => equal(option.value, val))
-    }
+  if (isArray(value)) {
+    return value.map(item => options.find(option => option.value === item))
+  }
 
-    return equal(option.value, value)
-  })
+  return options.filter(option => option.value === value)
 }
 
 export function getDocument() {

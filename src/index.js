@@ -122,9 +122,12 @@ export default class Select extends React.PureComponent {
 
   get options() {
     const { search } = this.state
-    const { creatable, onCreateText } = this.props
+    const { creatable, onCreateText, value } = this.props
     let options = this.props.options || []
     const showCreate = creatable && !options.some(option => option.value === search)
+    if (isArray(value)) {
+      options = options.filter(option => !value.includes(option.value))
+    }
     if (search) {
       options = options.filter(option => option.label.toLowerCase().includes(search.toLowerCase()))
     }

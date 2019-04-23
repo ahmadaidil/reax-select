@@ -31,7 +31,7 @@ export default class OptionComponent extends React.PureComponent {
       'option',
       selected ? 'selected' : null,
       active ? 'active' : null
-    ].filter(v => Boolean(v))
+    ].filter(Boolean)
 
     return (React.createElement(OptionItem, {
       className: className.join(' '), selected, active, height, onClick: this.onClick

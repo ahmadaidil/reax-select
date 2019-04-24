@@ -15,6 +15,6 @@ function create() {
   render(React.createElement(ReaxSelectStyle, null), reaxSelectDiv)
 }
 
-if (!document.getElementById(id)) {
+if (typeof document !== 'undefined' && !document.getElementById(id)) {
   create()
 }

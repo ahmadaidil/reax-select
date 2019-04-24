@@ -23,7 +23,7 @@ function labelComponent(props) {
 
   return (
     <Label>
-      <VolantisIcon height="20" width="20" color="#93a1b4" />
+      <VolantisIcon height="16" width="16" color="#93a1b4" />
       {props.children}
     </Label>
   )

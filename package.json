@@ -18,7 +18,7 @@
     "registry": "http://repo.volantis.io/repository/npm/"
   },
   "scripts": {
-    "start": "run-p build:watch docz:dev",
+    "start": "yarn docz:dev",
     "build": "rollup -c",
     "build:watch": "rollup -c -w",
     "lint": "esw --ext .jsx --ext .js --color",
@@ -67,6 +67,7 @@
     "eslint-watch": "^5.0.1",
     "npm-run-all": "^4.1.5",
     "pre-commit": "^1.2.2",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "rollup": "^1.9.0",

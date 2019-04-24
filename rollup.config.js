@@ -38,5 +38,10 @@ export default {
     }),
     commonjs(),
     terser()
-  ]
+  ],
+  onwarn(warning, rollupWarn) {
+    if (warning.code !== 'CIRCULAR_DEPENDENCY') {
+      rollupWarn(warning)
+    }
+  }
 }

@@ -505,7 +505,7 @@ export default class Select extends React.PureComponent {
       'reax-select',
       className,
       isError && 'has-error'
-    ].filter(c => Boolean(c))
+    ].filter(Boolean)
 
     return (
       React.createElement(React.Fragment, null,

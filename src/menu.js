@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { List } from 'react-virtualized/dist/commonjs/List'
+import List from 'react-virtualized/dist/commonjs/List'
 import SelectLabel from './label'
 import { isArray, equal } from './utils'
 import OptionComponent from './option'

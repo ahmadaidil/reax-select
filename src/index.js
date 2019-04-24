@@ -11,12 +11,15 @@ import './styling'
 
 export default class Select extends React.PureComponent {
   static propTypes = {
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    description: PropTypes.string,
     creatable: PropTypes.bool,
-    clearable: PropTypes.bool,
-    searchable: PropTypes.bool,
+    isClearable: PropTypes.bool,
+    isSearchable: PropTypes.bool,
     disabled: PropTypes.bool,
-    error: PropTypes.bool,
-    multi: PropTypes.bool,
+    isError: PropTypes.bool,
+    isMulti: PropTypes.bool,
     native: PropTypes.bool,
     keepSearchOnBlur: PropTypes.bool,
     options: PropTypes.array,
@@ -50,12 +53,14 @@ export default class Select extends React.PureComponent {
   }
 
   static defaultProps = {
+    label: '',
+    description: '',
     creatable: false,
-    clearable: false,
-    searchable: false,
+    isClearable: false,
+    isSearchable: false,
     disabled: false,
-    error: false,
-    multi: false,
+    isError: false,
+    isMulti: false,
     native: false,
     keepSearchOnBlur: false,
     options: [],
@@ -104,14 +109,14 @@ export default class Select extends React.PureComponent {
   }
 
   onChangeNativeSelect(e) {
-    const { onChange, multi } = this.props
+    const { onChange, isMulti } = this.props
     const { currentTarget } = e
     if (onChange) {
       if (currentTarget.value === '') {
         this.onClear()
       } else {
         const values = Array.from(currentTarget.selectedOptions).map(htmlOption => this.options[htmlOption.index - 1].value)
-        if (multi) {
+        if (isMulti) {
           onChange(values)
         } else {
           onChange(values[0])
@@ -207,7 +212,7 @@ export default class Select extends React.PureComponent {
   }
 
   onClear = () => {
-    this.onOptionSelect(this.props.multi ? [] : undefined)
+    this.onOptionSelect(this.props.isMulti ? [] : undefined)
   }
 
   onSearch = search => {
@@ -234,7 +239,7 @@ export default class Select extends React.PureComponent {
   }
 
   onKeyDown = ({ keyCode }) => {
-    const { searchable, creatable } = this.props
+    const { isSearchable, creatable } = this.props
     switch (keyCode) {
       case keys.TAB:
         if (this.state.open) {
@@ -245,7 +250,7 @@ export default class Select extends React.PureComponent {
         break
     }
 
-    if (!searchable && !creatable) {
+    if (!isSearchable && !creatable) {
       this.handleBlindText(keyCode)
     }
   }
@@ -327,13 +332,13 @@ export default class Select extends React.PureComponent {
 
   handleBlindTextUpdate = () => {
     const { open, blindText } = this.state
-    const { multi } = this.props
+    const { isMulti } = this.props
     if (open) {
       const selectedIndex = this.options.findIndex(option => option.label.toLowerCase().startsWith(blindText.toLowerCase()))
       if (selectedIndex >= 0) {
         this.setState({ selectedIndex })
       }
-    } else if (!multi) {
+    } else if (!isMulti) {
       if (blindText) {
         const option = this.options.find(option => option.label
           .toLowerCase()
@@ -433,30 +438,30 @@ export default class Select extends React.PureComponent {
   renderNativeSelect = () => {
     const { NativeSelect } = Select
     const {
-      native, placeholder, multi, disabled
+      native, placeholder, isMulti, disabled, name
     } = this.props
     const dataRole = this.props['data-role']
       ? `select-${this.props['data-role']}`
       : undefined
-    const clearable = this.props.clearable && native
+    const isClearable = this.props.isClearable && native
     const value = isArray(this.props.value)
       ? this.props.value.map(this.findOptionIndex)
       : this.findOptionIndex(this.props.value || '')
 
     return (React.createElement(NativeSelect, {
-      ref: this.nativeSelect, multiple: multi, value, disabled, native, tabIndex: -1, 'data-role': dataRole, onChange: this.onChangeNativeSelect
+      ref: this.nativeSelect, name, multiple: isMulti, value, disabled, native, tabIndex: -1, 'data-role': dataRole, onChange: this.onChangeNativeSelect
     },
-    React.createElement('option', { value: '', disabled: !clearable }, placeholder),
+    React.createElement('option', { value: '', disabled: !isClearable }, placeholder),
     this.options.map((option, i) => (React.createElement('option', { key: toKey(option.value), value: `${i}`, disabled: option.disabled }, option.label)))))
   }
 
   renderChildren = () => {
     const {
-      options, placeholder, multi, children
+      options, placeholder, isMulti, children
     } = this.props
     const { open, search } = this.state
     const valueOptions = getValueOptions(options || [], this.props.value)
-    const value = !multi
+    const value = !isMulti
       ? this.props.value
       : valueOptions.map(option => option.value)
     const showPlaceholder = !search && (isArray(value)
@@ -478,41 +483,70 @@ export default class Select extends React.PureComponent {
   }
 
   render() {
-    const { Container } = Select
+    const { Container, LabelTitle, LabelDescription } = Select
     const {
       className, options, creatable,
-      clearable, placeholder, value,
-      disabled, error, menuComponent,
+      isClearable, placeholder, value,
+      disabled, isError, menuComponent,
       labelComponent, optionComponent,
       valueComponentSingle, valueComponentMulti,
-      arrowComponent, clearComponent, multi,
-      native, emptyText, rowHeight, keepSearchOnBlur
+      arrowComponent, clearComponent, isMulti,
+      native, emptyText, rowHeight,
+      keepSearchOnBlur, label, description, name
     } = this.props
     const {
       open, search, selectedIndex, focused
     } = this.state
-    const searchable = this.props.searchable || creatable
+    const isSearchable = this.props.isSearchable || creatable
     if (this.props.children) {
       return this.renderChildren()
     }
     const classNames = [
       'reax-select',
       className,
-      error && 'has-error'
+      isError && 'has-error'
     ].filter(Boolean)
 
-    return (React.createElement(Container, {
-      className: classNames.join(' '), disabled, ref: this.onContainerRef, 'data-role': this.props['data-role'], onKeyUp: this.onKeyUp, onKeyDown: this.onKeyDown
-    },
-    this.renderNativeSelect(),
-    React.createElement(Value, {
-      clearable, searchable, open, disabled, multi, mobile: native, focused, options, placeholder, error, value, search, keepSearchOnBlur, labelComponent, valueComponentSingle, valueComponentMulti, arrowComponent, clearComponent, onClear: this.onClear, onClick: this.toggleMenu, onSearch: this.onSearch, onSearchFocus: this.onSearchFocus, onSearchBlur: this.onSearchBlur, onOptionRemove: this.onOptionRemove
-    }),
-    React.createElement(Menu, {
-      open, options: this.options, value, error, search, selectedIndex, menuComponent, labelComponent, optionComponent, emptyText, rowHeight, onSelect: this.onOptionSelect
-    })))
+    return (
+      React.createElement(React.Fragment, null,
+        label && React.createElement(LabelTitle, {
+          htmlFor: name
+        }, label.toUpperCase()),
+        React.createElement(Container, {
+          className: classNames.join(' '), disabled, ref: this.onContainerRef, 'data-role': this.props['data-role'], onKeyUp: this.onKeyUp, onKeyDown: this.onKeyDown
+        },
+        this.renderNativeSelect(),
+        React.createElement(Value, {
+          isClearable, isSearchable, open, disabled, isMulti, mobile: native, focused, options, placeholder, isError, value, search, keepSearchOnBlur, labelComponent, valueComponentSingle, valueComponentMulti, arrowComponent, clearComponent, onClear: this.onClear, onClick: this.toggleMenu, onSearch: this.onSearch, onSearchFocus: this.onSearchFocus, onSearchBlur: this.onSearchBlur, onOptionRemove: this.onOptionRemove
+        }),
+        React.createElement(Menu, {
+          open, options: this.options, value, isError, search, selectedIndex, menuComponent, labelComponent, optionComponent, emptyText, rowHeight, onSelect: this.onOptionSelect
+        })),
+        description && React.createElement(LabelDescription, {
+          isError
+        }, description))
+    )
   }
 }
+
+Select.LabelSelect = styled.label`
+  display: inline-block;
+  color: #9ea1b4;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
+  font-family: 'Roboto', sans-serif;
+`
+
+Select.LabelTitle = styled(Select.LabelSelect)`
+  margin-bottom: 4px;
+`
+
+Select.LabelDescription = styled(Select.LabelSelect)`
+  margin-top: 4px;
+  color: ${props => (props.isError && '#d5474f')};
+`
 
 Select.Container = styled.div`
   font: 400 14px 'Roboto', sans-serif;

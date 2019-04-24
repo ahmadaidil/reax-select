@@ -6,6 +6,13 @@
   "module": "dist/index.es.js",
   "repository": "https://github.com/ahmadaidil/reax-select.git",
   "author": "ahmadaidil <ahmdaidil@gmail.com>",
+  "contributors": [
+    {
+      "name": "Elisha Limanu",
+      "email": "elisha@volantis.io",
+      "url": "https://github.com/elishaenu"
+    }
+  ],
   "license": "WTFPL",
   "publishConfig": {
     "registry": "http://repo.volantis.io/repository/npm/"
@@ -16,10 +23,12 @@
     "build:watch": "rollup -c -w",
     "lint": "esw --ext .jsx --ext .js --color",
     "lint:css": "stylelint './src/**/*.js'",
-    "prerelease": "run-s lint lint:css build",
-    "release": "yarn publish",
+    "prerelease": "run-s lint lint:css build pack:modify",
+    "release": "yarn publish; yarn pack:revert",
     "example": "cd example; yarn start",
     "example:install": "cd example; yarn",
+    "pack:modify": "node scripts/modifyPackage.js",
+    "pack:revert": "node scripts/revertPackage.js",
     "precommit-msg": "echo 'Linter checks...' && exit 0"
   },
   "pre-commit": [

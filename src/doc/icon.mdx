@@ -1,0 +1,56 @@
+---
+name: Custom label with icon
+route: /custom-label-icon
+---
+import { Playground } from 'docz'
+import UsersIcon from 'volantis-icon/dist/icons/users'
+import Label from './Label'
+import ReaxSelect from '../'
+
+# Select with custom label (icon) component
+
+## Example usage
+<Playground>
+  {() => {
+    const options = [
+      { label: 'Ahmad Aidil', value: 'aidil' },
+      { label: 'Elisha Limanu', value: 'enu' },
+      { label: 'John Doe', value: 'john' }
+    ]
+
+    const [selectSingle, setSelectSingle] = React.useState('')
+
+    function labelComponent(props) {
+      return (
+        <Label>
+          <UsersIcon height="20" width="20" color="#fff" />
+          {props.children}
+        </Label>
+      )
+    }
+
+    return (
+      <ReaxSelect
+        searchable
+        value={selectSingle}
+        options={options}
+        onChange={val => setSelectSingle(val)}
+        placeholder="select your name..."
+        labelComponent={labelComponent}
+      />
+    )
+  }}
+</Playground>
+
+## Label styled
+```js
+import styled from 'styled-components'
+
+const Label = styled.div`
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: .5rem;
+  }
+`
+```

@@ -1,0 +1,33 @@
+---
+name: Multi Value
+route: /multi
+---
+import { Playground } from 'docz'
+import ReaxSelect from '../'
+
+# Select with Multi Value
+
+<Playground>
+  {() => {
+    const options = [
+      { label: 'Volvo', value: 'volvo' },
+      { label: 'Saab', value: 'saab' },
+      { label: 'Mercedes', value: 'mercedes' },
+      { label: 'Audi', value: 'audi' }
+    ]
+
+    const [selectMulti, setSelectMulti] = React.useState([])
+
+    return (
+      <ReaxSelect
+        multi
+        keepSearchOnBlur
+        searchable
+        value={selectMulti}
+        options={options}
+        onChange={val => setSelectMulti(val)}
+        placeholder="select your favorites brand car..."
+      />
+    )
+  }}
+</Playground>

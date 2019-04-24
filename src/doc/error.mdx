@@ -1,11 +1,11 @@
 ---
-name: Basic Select
-route: /
+name: Error description
+route: /error-desc
 ---
-import { Playground, Props } from 'docz'
+import { Playground } from 'docz'
 import ReaxSelect from '../'
 
-# Reax Select
+# Select with error description
 
 ## Basic usage
 
@@ -28,10 +28,9 @@ import ReaxSelect from '../'
         options={options}
         onChange={val => setSelectSingle(val)}
         placeholder="select your favorite brand car..."
+        isError
+        description="required"
       />
     )
   }}
 </Playground>
-
-## Props
-<Props of={ReaxSelect} />

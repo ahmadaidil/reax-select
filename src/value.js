@@ -41,7 +41,7 @@ const ValueContainer = styled.div`
   cursor: default;
   border-width: 1px;
   border-style: solid;
-  border-color: ${props => (props.error ? 'var(--reax-select-error-color)' : '#1b1c21')};
+  border-color: ${props => (props.isError ? 'var(--reax-select-error-color)' : '#1b1c21')};
   border-radius: ${props => (props.open ? '4px 4px 0 0' : '4px')};
   z-index: 0;
   box-sizing: border-box;
@@ -54,11 +54,11 @@ const ValueLeft = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
-  flex-wrap: ${props => (props.multi && props.hasValue ? 'wrap' : 'nowrap')};
+  flex-wrap: ${props => (props.isMulti && props.hasValue ? 'wrap' : 'nowrap')};
   user-select: none;
   min-width: 0;
   box-sizing: border-box;
-  margin: ${props => (props.multi && props.hasValue ? '-2px -5px' : 0)};
+  margin: ${props => (props.isMulti && props.hasValue ? '-2px -5px' : 0)};
 `
 
 const ValueRight = styled.div`
@@ -100,16 +100,16 @@ const Search = styled.span`
 
 export class Value extends React.PureComponent {
   static propTypes = {
-    clearable: PropTypes.bool.isRequired,
-    searchable: PropTypes.bool.isRequired,
+    isClearable: PropTypes.bool.isRequired,
+    isSearchable: PropTypes.bool.isRequired,
     open: PropTypes.bool.isRequired,
     disabled: PropTypes.bool.isRequired,
-    multi: PropTypes.bool.isRequired,
+    isMulti: PropTypes.bool.isRequired,
     mobile: PropTypes.bool.isRequired,
     focused: PropTypes.bool.isRequired,
     options: PropTypes.array.isRequired,
     placeholder: PropTypes.string.isRequired,
-    error: PropTypes.bool.isRequired,
+    isError: PropTypes.bool.isRequired,
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.array,
@@ -170,7 +170,7 @@ export class Value extends React.PureComponent {
   }
 
   onSearch = e => {
-    if (this.props.searchable) {
+    if (this.props.isSearchable) {
       this.props.onSearch(e.currentTarget.innerText.trim())
     } else {
       e.preventDefault()
@@ -178,11 +178,11 @@ export class Value extends React.PureComponent {
   }
 
   onKeyDown = e => {
-    const { searchable } = this.props
+    const { isSearchable } = this.props
     if (e.metaKey) {
       return
     }
-    if ((!searchable && e.keyCode !== keys.TAB) || e.keyCode === keys.ENTER || e.keyCode === keys.ARROW_UP || e.keyCode === keys.ARROW_DOWN) {
+    if ((!isSearchable && e.keyCode !== keys.TAB) || e.keyCode === keys.ENTER || e.keyCode === keys.ARROW_UP || e.keyCode === keys.ARROW_DOWN) {
       e.preventDefault()
     }
   }
@@ -210,9 +210,9 @@ export class Value extends React.PureComponent {
 
   renderSearch() {
     const {
-      open, value, disabled, searchable, keepSearchOnBlur, onSearchFocus, onSearchBlur
+      open, value, disabled, isSearchable, keepSearchOnBlur, onSearchFocus, onSearchBlur
     } = this.props
-    const canSearch = (open && searchable) || (keepSearchOnBlur && !value && searchable)
+    const canSearch = (open && isSearchable) || (keepSearchOnBlur && !value && isSearchable)
     if (disabled && !keepSearchOnBlur) {
       return null
     }
@@ -224,9 +224,9 @@ export class Value extends React.PureComponent {
 
   renderValues(valueOptions) {
     const {
-      placeholder, search, labelComponent, valueComponentSingle, valueComponentMulti, multi
+      placeholder, search, labelComponent, valueComponentSingle, valueComponentMulti, isMulti
     } = this.props
-    if (search && !multi) {
+    if (search && !isMulti) {
       return null
     }
     if (valueOptions.length === 0 && !search) {
@@ -235,26 +235,26 @@ export class Value extends React.PureComponent {
     const Single = valueComponentSingle || ValueSingle
     const Multi = (valueComponentMulti || ValueMulti)
 
-    return valueOptions.map(option => (multi ? (React.createElement(Multi, {
+    return valueOptions.map(option => (isMulti ? (React.createElement(Multi, {
       key: toKey(option.value), option, labelComponent, options: valueOptions, onRemove: this.props.onOptionRemove
     })) : (React.createElement(Single, { key: toKey(option.value), option, labelComponent }))))
   }
 
   render() {
     const {
-      options = [], value, disabled, clearable, open, mobile, multi, focused, error
+      options = [], value, disabled, isClearable, open, mobile, isMulti, focused, isError
     } = this.props
     const ArrowComponent = this.props.arrowComponent
     const ClearComponent = this.props.clearComponent || ClearX
     const valueOptions = getValueOptions(options, value)
-    const showClearer = Boolean(clearable && valueOptions.length && !mobile)
-    const searchAtStart = !multi || valueOptions.length === 0
-    const searchAtEnd = multi && valueOptions.length > 0
+    const showClearer = Boolean(isClearable && valueOptions.length && !mobile)
+    const searchAtStart = !isMulti || valueOptions.length === 0
+    const searchAtEnd = isMulti && valueOptions.length > 0
 
     return (React.createElement(ValueContainer, {
-      'data-role': 'value', className: 'reax-select-value', disabled, mobile, focused, error, open, onClick: this.onClick
+      'data-role': 'value', className: 'reax-select-value', disabled, mobile, focused, isError, open, onClick: this.onClick
     },
-    React.createElement(ValueLeft, { className: 'value-left', multi, hasValue: !!valueOptions.length },
+    React.createElement(ValueLeft, { className: 'value-left', isMulti, hasValue: !!valueOptions.length },
       searchAtStart && this.renderSearch(),
       this.renderValues(valueOptions),
       searchAtEnd && this.renderSearch()),

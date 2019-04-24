@@ -47,7 +47,7 @@ export default function App() {
   return (
     <>
       <Select
-        searchable
+        isSearchable
         value={selectSingle}
         options={options}
         onChange={val => setSelectSingle(val)}
@@ -55,9 +55,9 @@ export default function App() {
       />
       <br />
       <Select
-        multi
+        isMulti
         keepSearchOnBlur
-        searchable
+        isSearchable
         value={selectMulti}
         options={options}
         onChange={val => setSelectMulti(val)}

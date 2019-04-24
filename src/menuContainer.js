@@ -54,7 +54,7 @@ const Container = styled.div.attrs(props => ({
   .ReactVirtualized__List {
     border-width: 1px;
     border-style: solid;
-    border-color: ${props => (props.error ? 'var(--react-select-error-color)' : '#1b1c21')};
+    border-color: ${props => (props.isError ? 'var(--react-select-error-color)' : '#1b1c21')};
     border-radius: 0 0 4px 4px;
     background-color: transparent;
     &:focus {
@@ -68,7 +68,7 @@ export default class MenuContainer extends React.PureComponent {
     onRect: PropTypes.func.isRequired,
     menuWidth: PropTypes.number,
     menuHeight: PropTypes.number.isRequired,
-    error: PropTypes.bool.isRequired,
+    isError: PropTypes.bool.isRequired,
     onRef: PropTypes.func,
     onClick: PropTypes.func,
     children: PropTypes.node,
@@ -156,7 +156,7 @@ export default class MenuContainer extends React.PureComponent {
 
   render() {
     const {
-      menuWidth, menuHeight, error, onRef, onClick, children
+      menuWidth, menuHeight, isError, onRef, onClick, children
     } = this.props
     const className = ['react-select-menu', this.props.className]
       .filter(c => c)
@@ -164,7 +164,7 @@ export default class MenuContainer extends React.PureComponent {
 
     return (React.createElement(MenuWrapper, { ref: this.onEl }, this.document
       ? createPortal(React.createElement(Container, {
-        'data-role': 'menu', className, error, rect: this.state.rect, menuWidth, menuHeight, ref: onRef, onClick
+        'data-role': 'menu', className, isError, rect: this.state.rect, menuWidth, menuHeight, ref: onRef, onClick
       }, children), this.document.body)
       : null))
   }

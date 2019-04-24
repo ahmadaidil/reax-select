@@ -16,7 +16,7 @@ export default class Menu extends React.PureComponent {
       PropTypes.array,
       PropTypes.object
     ]).isRequired,
-    error: PropTypes.bool.isRequired,
+    isError: PropTypes.bool.isRequired,
     search: PropTypes.string,
     selectedIndex: PropTypes.number,
     menuComponent: PropTypes.node,
@@ -94,7 +94,7 @@ export default class Menu extends React.PureComponent {
 
   render() {
     const {
-      open, options = [], selectedIndex, error
+      open, options = [], selectedIndex, isError
     } = this.props
     const { rect } = this.state
     const MenuContent = this.props.menuComponent
@@ -102,7 +102,7 @@ export default class Menu extends React.PureComponent {
     const menuHeight = 185
     const height = Math.min(Math.max(options.length * rowHeight, rowHeight), menuHeight)
 
-    return open ? (React.createElement(MenuContainer, { error, menuHeight: height, onRect: this.onRect }, MenuContent ? (React.createElement(MenuContent, Object.assign({}, this.props))) : (React.createElement(List, {
+    return open ? (React.createElement(MenuContainer, { isError, menuHeight: height, onRect: this.onRect }, MenuContent ? (React.createElement(MenuContent, Object.assign({}, this.props))) : (React.createElement(List, {
       className: 'reax-select-menu-list', ref: this.list, width: rect ? rect.width : 0, height, rowHeight, rowCount: options.length, rowRenderer: this.rowRenderer, scrollToIndex: selectedIndex, noRowsRenderer: this.emptyRenderer
     })))) : null
   }

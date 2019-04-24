@@ -40,17 +40,21 @@ export default function App() {
   return (
     <>
       <Select
-        searchable
+        label="Select with title"
+        isSearchable
         value={selectSingle}
         options={options}
         onChange={val => setSelectSingle(val)}
         placeholder="select your favorite brand car..."
+        isError
+        description="Type some description here"
       />
       <br />
       <Select
-        multi
+        name="select your favorites brand car... (multi)"
+        isMulti
         keepSearchOnBlur
-        searchable
+        isSearchable
         value={selectMulti}
         options={options}
         onChange={val => setSelectMulti(val)}
@@ -59,7 +63,8 @@ export default function App() {
       />
       <br />
       <Select
-        searchable
+        name="select your favorite brand car... (with icon label option)"
+        isSearchable
         value={selectSingle}
         options={options}
         onChange={val => setSelectSingle(val)}

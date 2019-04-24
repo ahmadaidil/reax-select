@@ -1,0 +1,36 @@
+---
+name: Error description
+route: /error-desc
+---
+import { Playground } from 'docz'
+import ReaxSelect from '../'
+
+# Select with error description
+
+## Basic usage
+
+<Playground>
+  {() => {
+    const options = [
+      { label: 'Volvo', value: 'volvo' },
+      { label: 'Saab', value: 'saab' },
+      { label: 'Mercedes', value: 'mercedes' },
+      { label: 'Audi', value: 'audi' }
+    ]
+
+    const [selectSingle, setSelectSingle] = React.useState('')
+
+    return (
+      <ReaxSelect
+        label="Favorite brand car"
+        isSearchable
+        value={selectSingle}
+        options={options}
+        onChange={val => setSelectSingle(val)}
+        placeholder="select your favorite brand car..."
+        isError
+        description="required"
+      />
+    )
+  }}
+</Playground>

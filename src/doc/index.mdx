@@ -1,0 +1,37 @@
+---
+name: Basic Select
+route: /
+---
+import { Playground, Props } from 'docz'
+import ReaxSelect from '../'
+
+# Reax Select
+
+## Basic usage
+
+<Playground>
+  {() => {
+    const options = [
+      { label: 'Volvo', value: 'volvo' },
+      { label: 'Saab', value: 'saab' },
+      { label: 'Mercedes', value: 'mercedes' },
+      { label: 'Audi', value: 'audi' }
+    ]
+
+    const [selectSingle, setSelectSingle] = React.useState('')
+
+    return (
+      <ReaxSelect
+        label="Favorite brand car"
+        isSearchable
+        value={selectSingle}
+        options={options}
+        onChange={val => setSelectSingle(val)}
+        placeholder="select your favorite brand car..."
+      />
+    )
+  }}
+</Playground>
+
+## Props
+<Props of={ReaxSelect} />

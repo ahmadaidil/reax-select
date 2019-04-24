@@ -18,17 +18,17 @@
     "registry": "http://repo.volantis.io/repository/npm/"
   },
   "scripts": {
-    "start": "run-p build:watch example",
+    "start": "yarn docz:dev",
     "build": "rollup -c",
     "build:watch": "rollup -c -w",
     "lint": "esw --ext .jsx --ext .js --color",
     "lint:css": "stylelint './src/**/*.js'",
     "prerelease": "run-s lint lint:css build pack:modify",
     "release": "yarn publish; yarn pack:revert",
-    "example": "cd example; yarn start",
-    "example:install": "cd example; yarn",
     "pack:modify": "node scripts/modifyPackage.js",
     "pack:revert": "node scripts/revertPackage.js",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build",
     "precommit-msg": "echo 'Linter checks...' && exit 0"
   },
   "pre-commit": [
@@ -56,6 +56,8 @@
     "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.10.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "docz": "^1.0.4",
+    "docz-theme-default": "^1.0.4",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
@@ -65,6 +67,7 @@
     "eslint-watch": "^5.0.1",
     "npm-run-all": "^4.1.5",
     "pre-commit": "^1.2.2",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "rollup": "^1.9.0",

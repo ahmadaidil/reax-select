@@ -499,7 +499,7 @@ export default class Select extends React.PureComponent {
       'reax-select',
       className,
       error && 'has-error'
-    ].filter(c => Boolean(c))
+    ].filter(Boolean)
 
     return (React.createElement(Container, {
       className: classNames.join(' '), disabled, ref: this.onContainerRef, 'data-role': this.props['data-role'], onKeyUp: this.onKeyUp, onKeyDown: this.onKeyDown

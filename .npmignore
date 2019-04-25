@@ -1,5 +1,7 @@
 .eslint*
 .yarnrc
+.babelrc
+.stylelintrc
 
 yarn-debug.log*
 yarn-error.log*

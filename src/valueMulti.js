@@ -39,7 +39,7 @@ ValueMulti.TagContainer = styled.div`
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.4;
-  margin: 0 4px;
+  margin: 3px 4px;
   align-items: center;
   &:last-of-type {
     margin-right: 5px;

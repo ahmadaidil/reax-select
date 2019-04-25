@@ -58,7 +58,6 @@ const ValueLeft = styled.div`
   user-select: none;
   min-width: 0;
   box-sizing: border-box;
-  margin: ${props => (props.isMulti && props.hasValue ? '-2px -5px' : 0)};
 `
 
 const ValueRight = styled.div`

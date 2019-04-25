@@ -63,8 +63,8 @@ const ValueLeft = styled.div`
 const ValueRight = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 4px;
   box-sizing: border-box;
+  padding: 0 8px;
 `
 
 const Placeholder = styled(Label)`

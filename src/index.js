@@ -561,7 +561,6 @@ Select.Container = styled.div`
   width: 100%;
   box-sizing: border-box;
   pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
-  opacity: ${props => (props.disabled ? '0.4' : '1')};
   user-select: none;
 `
 

@@ -19,9 +19,9 @@ export default class Menu extends React.PureComponent {
     isError: PropTypes.bool.isRequired,
     search: PropTypes.string,
     selectedIndex: PropTypes.number,
-    menuComponent: PropTypes.node,
-    labelComponent: PropTypes.node,
-    optionComponent: PropTypes.node,
+    menuComponent: PropTypes.any,
+    labelComponent: PropTypes.any,
+    optionComponent: PropTypes.any,
     emptyText: PropTypes.string.isRequired,
     rowHeight: PropTypes.number.isRequired,
     onSelect: PropTypes.func.isRequired

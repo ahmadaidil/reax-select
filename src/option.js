@@ -10,7 +10,7 @@ export default class OptionComponent extends React.PureComponent {
     option: PropTypes.object.isRequired,
     onSelect: PropTypes.func.isRequired,
     height: PropTypes.number.isRequired,
-    labelComponent: PropTypes.node
+    labelComponent: PropTypes.any
   }
 
   static defaultProps = {

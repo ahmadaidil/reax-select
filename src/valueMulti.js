@@ -7,7 +7,7 @@ import Remove from './remove'
 export default class ValueMulti extends React.PureComponent {
   static propTypes = {
     option: PropTypes.object.isRequired,
-    labelComponent: PropTypes.node,
+    labelComponent: PropTypes.any,
     onRemove: PropTypes.func.isRequired
   }
 

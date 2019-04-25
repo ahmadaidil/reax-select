@@ -43,13 +43,13 @@ export default class Select extends React.PureComponent {
     onClose: PropTypes.func,
     onSearch: PropTypes.func,
     onChange: PropTypes.func.isRequired,
-    menuComponent: PropTypes.node,
-    labelComponent: PropTypes.node,
-    optionComponent: PropTypes.node,
-    valueComponentSingle: PropTypes.node,
-    valueComponentMulti: PropTypes.node,
-    arrowComponent: PropTypes.node,
-    clearComponent: PropTypes.node
+    menuComponent: PropTypes.any,
+    labelComponent: PropTypes.any,
+    optionComponent: PropTypes.any,
+    valueComponentSingle: PropTypes.any,
+    valueComponentMulti: PropTypes.any,
+    arrowComponent: PropTypes.any,
+    clearComponent: PropTypes.any
   }
 
   static defaultProps = {

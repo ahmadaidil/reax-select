@@ -16,7 +16,7 @@ function ValueSingle(props) {
 
 ValueSingle.propTypes = {
   option: PropTypes.object.isRequired,
-  labelComponent: PropTypes.node
+  labelComponent: PropTypes.any
 }
 
 ValueSingle.defaultProps = {

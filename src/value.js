@@ -38,7 +38,7 @@ const ValueContainer = styled.div`
   opacity: ${props => (props.disabled ? '0.4' : '1')};
   padding-left: 8px;
   background: #454958;
-  cursor: default;
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   border-width: 1px;
   border-style: solid;
   border-color: ${props => (props.isError ? 'var(--reax-select-error-color)' : '#1b1c21')};
@@ -116,11 +116,11 @@ export class Value extends React.PureComponent {
     ]).isRequired,
     search: PropTypes.string,
     keepSearchOnBlur: PropTypes.bool.isRequired,
-    labelComponent: PropTypes.node,
-    valueComponentSingle: PropTypes.node,
-    valueComponentMulti: PropTypes.node,
-    arrowComponent: PropTypes.node,
-    clearComponent: PropTypes.node,
+    labelComponent: PropTypes.any,
+    valueComponentSingle: PropTypes.any,
+    valueComponentMulti: PropTypes.any,
+    arrowComponent: PropTypes.any,
+    clearComponent: PropTypes.any,
     onClear: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
     onSearch: PropTypes.func.isRequired,

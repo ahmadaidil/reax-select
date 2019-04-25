@@ -1,34 +1,16 @@
 # Reax Select ✨
 ### Select input for react component
 
-### 🔥 Development
-➡️ How to install dependencies, build lib and start example app
-* install deps 
-```terminal
-$ yarn
-$ yarn example:install
-```
-* start example app
-```terminal
-$ yarn start
-```
-* release to npm
-```terminal
-$ yarn release
-```
----
-### ✨ Production
-
-➡️ How to install and use 'reax-select'
-* install using npm
+➡️ How to install and basic usage of 'reax-select'
+* install via npm
 ```terminal
 $ npm i reax-select
 ```
-* install using yarn
+* install via yarn
 ```terminal
 $ yarn add reax-select
 ```
-* example use
+* basic usage example
 ```js
 import React from 'react'
 import Select from 'reax-select'
@@ -71,5 +53,8 @@ export default function App() {
 #### Credits:
 * ⚛️ [reactjs](https://reactjs.org/)
 * 💅 [styled-components](https://www.styled-components.com/)
+---
+Contributor:
+- [Elisha Limanu](https://github.com/elishaenu)
 ---
 &copy; 2019 Ahmad Aidil

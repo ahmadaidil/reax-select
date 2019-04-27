@@ -23,16 +23,16 @@ const options = [
 ]
 
 export default function App() {
-  const [selectSingle, setSelectSingle] = React.useState({})
-  const [selectMulti, setSelectMulti] = React.useState([])
+  const [singleValue, setSingleValue] = React.useState('')
+  const [multiValue, setMultiValue] = React.useState([])
 
   return (
     <>
       <Select
         isSearchable
-        value={selectSingle}
+        value={singleValue}
         options={options}
-        onChange={val => setSelectSingle(val)}
+        onChange={val => setSingleValue(val)}
         placeholder="select your favorite brand car..."
       />
       <br />
@@ -40,9 +40,9 @@ export default function App() {
         isMulti
         keepSearchOnBlur
         isSearchable
-        value={selectMulti}
+        value={multiValue}
         options={options}
-        onChange={val => setSelectMulti(val)}
+        onChange={val => setMultiValue(val)}
         placeholder="select your favorites brand car..."
       />
     </>

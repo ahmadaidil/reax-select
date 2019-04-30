@@ -55,7 +55,7 @@ const Container = styled.div.attrs(props => ({
     border-width: 1px;
     border-style: solid;
     border-color: ${props => (props.isError ? 'var(--react-select-error-color)' : '#1b1c21')};
-    border-radius: 0 0 4px 4px;
+    border-radius: 4px;
     background-color: transparent;
     &:focus {
       outline: none;

@@ -42,7 +42,7 @@ const ValueContainer = styled.div`
   border-width: 1px;
   border-style: solid;
   border-color: ${props => (props.isError ? 'var(--reax-select-error-color)' : '#1b1c21')};
-  border-radius: ${props => (props.open ? '4px 4px 0 0' : '4px')};
+  border-radius: 4px;
   z-index: 0;
   box-sizing: border-box;
   max-width: 100%;

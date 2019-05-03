@@ -7,7 +7,7 @@ import { terser } from 'rollup-plugin-terser'
 import pkg from './package.json'
 
 export default {
-  input: 'src/index.js',
+  input: 'src/Select.js',
   output: [
     {
       file: pkg.main,
@@ -20,7 +20,7 @@ export default {
       sourcemap: true
     }
   ],
-  // external: ['styled-components'],
+  external: ['styled-components'],
   plugins: [
     external({
       includeDependencies: false

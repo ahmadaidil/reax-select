@@ -38,11 +38,11 @@
   ],
   "peerDependencies": {
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "styled-components": "^4.2.0"
+    "react-dom": "^16.8.6"
   },
   "dependencies": {
     "react-virtualized": "^9.21.0",
+    "styled-components": "^4.2.0",
     "volantis-icon": "^0.2.0"
   },
   "devDependencies": {
@@ -56,8 +56,8 @@
     "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.10.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "docz": "^1.0.4",
-    "docz-theme-default": "^1.0.4",
+    "docz": "^1.1.0",
+    "docz-theme-default": "^1.1.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
@@ -76,7 +76,6 @@
     "rollup-plugin-node-resolve": "^4.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-terser": "^4.0.4",
-    "styled-components": "^4.2.0",
     "stylelint": "^9.10.1",
     "stylelint-config-recommended": "^2.1.0",
     "stylelint-config-styled-components": "^0.1.1",

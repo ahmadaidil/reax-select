@@ -21,7 +21,7 @@ function getContainerTop(props) {
     case 'top':
       return `${props.rect.top - (props.menuHeight || 186)}px`
     case 'bottom':
-      return `${props.rect.top + props.rect.height - 1}px`
+      return `${props.rect.top + props.rect.height}px`
     default:
       return ''
   }
